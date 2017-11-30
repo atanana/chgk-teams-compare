@@ -1,33 +1,32 @@
 import * as React from 'react';
 import './App.css';
 import Uploader from './components/Uploader';
-import PapaWrapper from './parse/PapaWrapper';
-import ParseResult = PapaParse.ParseResult;
+import ResultsParser from './parse/ResultsParser';
 
 interface AppState {
     error: string | null;
 }
 
-class App extends React.Component<{}, AppState> {
-    constructor(props: {}) {
-        super(props);
+interface AppProps {
+    parser: ResultsParser;
+}
 
-        this.state = {
-            error: null
-        };
+class App extends React.Component<AppProps, AppState> {
+    state: AppState = {
+        error: null
+    };
+
+    constructor(props: AppProps) {
+        super(props);
 
         this.onFileSelected = this.onFileSelected.bind(this);
     }
 
     onFileSelected(files: FileList | null) {
         if (files && files.length) {
-            PapaWrapper.parseFile(files[0])
-                .then((result: ParseResult) => {
-                    if (!result.errors.length) {
-                        console.log(result.data);
-                    } else {
-                        throw new Error();
-                    }
+            this.props.parser.parse(files[0])
+                .then((result: TeamData[]) => {
+
                 })
                 .catch(e => {
                     // noinspection TsLint
