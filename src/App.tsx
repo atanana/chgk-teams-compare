@@ -24,7 +24,7 @@ class App extends React.Component<{}, AppState> {
             PapaWrapper.parseFile(files[0])
                 .then((result: ParseResult) => {
                     if (!result.errors.length) {
-
+                        console.log(result.data);
                     } else {
                         throw new Error();
                     }

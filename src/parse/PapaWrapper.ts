@@ -1,7 +1,11 @@
 import * as Papa from 'papaparse';
 import ParseResult = PapaParse.ParseResult;
 
-const PapaWrapper = {
+export interface PapaWrapper {
+    parseFile(file: File): Promise<ParseResult>;
+}
+
+const PapaWrapperImpl: PapaWrapper = {
     parseFile(file: File): Promise<ParseResult> {
         return new Promise((resolve, reject) => {
             Papa.parse(file, {
@@ -14,4 +18,4 @@ const PapaWrapper = {
     }
 };
 
-export default PapaWrapper;
+export default PapaWrapperImpl;
