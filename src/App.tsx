@@ -1,17 +1,14 @@
 import * as React from 'react';
 import './App.css';
 import Uploader from './components/Uploader';
-import * as Papa from 'papaparse';
+import PapaWrapper from './parse/PapaWrapper';
+import ParseResult = PapaParse.ParseResult;
 
 class App extends React.Component {
     onFileSelected(files: FileList | null) {
         if (files && files.length) {
-            Papa.parse(files[0], {
-                encoding: 'cp1251',
-                complete: results => {
-                    console.log(results);
-                }
-            });
+            PapaWrapper.parseFile(files[0])
+                .then((result: ParseResult) => console.log(result));
         } else {
             alert('Пожалуйста, выберите файл');
         }
