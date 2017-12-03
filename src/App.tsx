@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import Uploader from './components/Uploader';
 import ResultsParser from './parse/ResultsParser';
+import { TeamData } from './data/ResultsData';
 
 interface AppState {
     error: string | null;
@@ -26,7 +27,7 @@ class App extends React.Component<AppProps, AppState> {
         if (files && files.length) {
             this.props.parser.parse(files[0])
                 .then((result: TeamData[]) => {
-
+                    console.log(result);
                 })
                 .catch(e => {
                     // noinspection TsLint
