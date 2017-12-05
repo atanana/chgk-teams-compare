@@ -3,9 +3,11 @@ import './App.css';
 import Uploader from './components/Uploader';
 import ResultsParser from './parse/ResultsParser';
 import { TeamData } from './data/ResultsData';
+import TeamsSelect from './components/TeamsSelect';
 
 interface AppState {
     error: string | null;
+    teams: TeamData[];
 }
 
 interface AppProps {
@@ -14,7 +16,8 @@ interface AppProps {
 
 class App extends React.Component<AppProps, AppState> {
     state: AppState = {
-        error: null
+        error: null,
+        teams: []
     };
 
     constructor(props: AppProps) {
@@ -26,8 +29,8 @@ class App extends React.Component<AppProps, AppState> {
     onFileSelected(files: FileList | null) {
         if (files && files.length) {
             this.props.parser.parse(files[0])
-                .then((result: TeamData[]) => {
-                    console.log(result);
+                .then((teams: TeamData[]) => {
+                    this.setState({ teams });
                 })
                 .catch(e => {
                     // noinspection TsLint
@@ -49,8 +52,17 @@ class App extends React.Component<AppProps, AppState> {
                             {this.state.error} :(
                         </div>
                     }
-                    <div className="content">Выберите файл с результатами</div>
-                    <Uploader onFileSelected={this.onFileSelected}/>
+                    <div className="field">
+                        <label className="label">Выберите файл с результатами</label>
+                        <Uploader onFileSelected={this.onFileSelected}/>
+                    </div>
+                    {
+                        this.state.teams.length > 0 &&
+                        <div className="field">
+                            <label className="label">Выберите команды</label>
+                            <TeamsSelect teams={this.state.teams}/>
+                        </div>
+                    }
                 </div>
             </div>
         );
