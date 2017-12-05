@@ -5,14 +5,30 @@ import { TeamData } from '../data/ResultsData';
 
 const teamToOption = (data: TeamData): Option => {
     return {
-        label: `${data.name}(${data.city})`,
+        label: `${data.id} ${data.name}(${data.city})`,
         value: data.id
     };
 };
 
-const TeamsSelect = ({ teams }: { teams: TeamData[] }) => (
+const bindSelect = (onSelect: (selectedTeams: number[]) => void) => (options: Option<number>[]): void => {
+    const selectedTeams = options.map<number>(option => option.value || 0); // todo flatmap
+    onSelect(selectedTeams);
+};
+
+interface Props {
+    teams: TeamData[];
+    onSelect: (selectedTeams: number[]) => void;
+    selectedTeams: TeamData[];
+}
+
+const TeamsSelect = ({ teams, onSelect, selectedTeams }: Props) => (
     <div>
-        <ReactSelectClass options={teams.map(teamToOption)}/>
+        <ReactSelectClass
+            multi={true}
+            options={teams.map(teamToOption)}
+            onChange={bindSelect(onSelect)}
+            value={selectedTeams.map(team => team.id)}
+        />
     </div>
 );
 

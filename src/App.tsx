@@ -8,6 +8,7 @@ import TeamsSelect from './components/TeamsSelect';
 interface AppState {
     error: string | null;
     teams: TeamData[];
+    selectedTeams: TeamData[];
 }
 
 interface AppProps {
@@ -17,13 +18,15 @@ interface AppProps {
 class App extends React.Component<AppProps, AppState> {
     state: AppState = {
         error: null,
-        teams: []
+        teams: [],
+        selectedTeams: []
     };
 
     constructor(props: AppProps) {
         super(props);
 
         this.onFileSelected = this.onFileSelected.bind(this);
+        this.onTeamSelected = this.onTeamSelected.bind(this);
     }
 
     onFileSelected(files: FileList | null) {
@@ -40,6 +43,12 @@ class App extends React.Component<AppProps, AppState> {
         } else {
             alert('Пожалуйста, выберите файл');
         }
+    }
+
+    onTeamSelected(selectedTeams: number[]) {
+        this.setState({
+            selectedTeams: this.state.teams.filter(team => selectedTeams.indexOf(team.id) !== -1)
+        });
     }
 
     render() {
@@ -60,7 +69,11 @@ class App extends React.Component<AppProps, AppState> {
                         this.state.teams.length > 0 &&
                         <div className="field">
                             <label className="label">Выберите команды</label>
-                            <TeamsSelect teams={this.state.teams}/>
+                            <TeamsSelect
+                                teams={this.state.teams}
+                                onSelect={this.onTeamSelected}
+                                selectedTeams={this.state.selectedTeams}
+                            />
                         </div>
                     }
                 </div>
