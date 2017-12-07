@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 
 const teamToOption = (data: TeamData): Option => {
     return {
-        label: `${data.id} ${data.name}(${data.city})`,
+        label: `${data.name}(${data.city})`,
         value: data.id
     };
 };

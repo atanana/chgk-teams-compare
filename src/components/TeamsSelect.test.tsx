@@ -21,8 +21,8 @@ it('shows correct teams options', () => {
     const teamsSelect = shallow(<TeamsSelect selectedTeams={[]} onSelect={onTeamsSelect} teams={teams}/>);
     const options = teamsSelect.find(ReactSelectClass).prop('options');
     expect(options).toEqual([
-        { label: '123 test team 1(test city 1)', value: 123 },
-        { label: '321 test team 2(test city 2)', value: 321 }
+        { label: 'test team 1(test city 1)', value: 123 },
+        { label: 'test team 2(test city 2)', value: 321 }
     ]);
 });
 
