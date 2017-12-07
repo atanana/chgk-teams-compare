@@ -4,6 +4,7 @@ import Uploader from './components/Uploader';
 import ResultsParser from './parse/ResultsParser';
 import { TeamData } from './data/ResultsData';
 import TeamsSelect from './components/TeamsSelect';
+import * as _ from 'lodash';
 
 interface AppState {
     error: string | null;
@@ -33,7 +34,7 @@ class App extends React.Component<AppProps, AppState> {
         if (files && files.length) {
             this.props.parser.parse(files[0])
                 .then((teams: TeamData[]) => {
-                    this.setState({ teams });
+                    this.setState({ teams: _.sortBy(teams, ['name', 'city']) });
                 })
                 .catch(() => {
                     this.setState({ error: 'Не получилось прочитать файл' });
