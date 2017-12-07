@@ -5,6 +5,7 @@ import App from './App';
 import ResultsParser from './parse/ResultsParser';
 import { TeamData } from './data/ResultsData';
 import Uploader from './components/Uploader';
+import TeamsSelect from './components/TeamsSelect';
 
 const Parser = jest.fn<ResultsParser>();
 
@@ -68,4 +69,34 @@ it('saves parser error', done => {
         expect(app.state('error')).toBe('Не получилось прочитать файл');
         done();
     });
+});
+
+it('not show team selector when no teams', () => {
+    const app = shallow(<App parser={new Parser}/>);
+    expect(app.find(TeamsSelect).exists()).toBe(false);
+});
+
+it('show team selector when has teams', () => {
+    const app = shallow(<App parser={new Parser}/>);
+    const teams = [new TeamData(1, 'test', 'test')];
+    app.setState({ teams });
+    expect(app.find(TeamsSelect).exists()).toBe(true);
+});
+
+it('pass selected teams', () => {
+    const app = shallow(<App parser={new Parser}/>);
+    const selectedTeams = [new TeamData(1, 'test', 'test')];
+    app.setState({ teams: selectedTeams, selectedTeams });
+    expect(app.find(TeamsSelect).prop('selectedTeams')).toBe(selectedTeams);
+});
+
+it('select teams', () => {
+    const app = shallow(<App parser={new Parser}/>);
+    const teams = [
+        new TeamData(1, 'test 1', 'test 1'),
+        new TeamData(2, 'test 2', 'test 2')
+    ];
+    app.setState({ teams });
+    app.find(TeamsSelect).prop('onSelect')([2]);
+    expect(app.state('selectedTeams')).toEqual([teams[1]]);
 });
