@@ -11,8 +11,6 @@ const Parser = jest.fn<ResultsParser>();
 
 const FileMock = jest.fn<File>();
 
-const TeamsDataMock = jest.fn<TeamData[]>();
-
 const createFileListMock = (file: File) => {
     const Clazz = jest.fn<FileList>(() => ({
         0: file,
@@ -42,7 +40,9 @@ it('renders error', () => {
 
 it('saves parsed teams', done => {
     const fileMock = new FileMock;
-    const teamsData = new TeamsDataMock;
+    const teamsData = [
+        new TeamData(1, 'test', 'test')
+    ];
     const CustomParser = jest.fn<ResultsParser>(() => ({
         parse(file: File): Promise<TeamData[]> {
             return file === fileMock ? Promise.resolve(teamsData) : Promise.reject(new Error());
@@ -51,7 +51,31 @@ it('saves parsed teams', done => {
     const app = shallow(<App parser={new CustomParser}/>);
     app.find(Uploader).prop('onFileSelected')(createFileListMock(fileMock));
     setImmediate(() => {
-        expect(app.state('teams')).toBe(teamsData);
+        expect(app.state('teams')).toEqual(teamsData);
+        done();
+    });
+});
+
+it('sorts teams', done => {
+    const fileMock = new FileMock;
+    const teamsData = [
+        new TeamData(1, 'c', 'c'),
+        new TeamData(2, 'b', 'b'),
+        new TeamData(3, 'b', 'a')
+    ];
+    const CustomParser = jest.fn<ResultsParser>(() => ({
+        parse(): Promise<TeamData[]> {
+            return Promise.resolve(teamsData);
+        }
+    }));
+    const app = shallow(<App parser={new CustomParser}/>);
+    app.find(Uploader).prop('onFileSelected')(createFileListMock(fileMock));
+    setImmediate(() => {
+        expect(app.state('teams')).toEqual([
+            teamsData[2],
+            teamsData[1],
+            teamsData[0]
+        ]);
         done();
     });
 });
