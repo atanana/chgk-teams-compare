@@ -35,9 +35,7 @@ class App extends React.Component<AppProps, AppState> {
                 .then((teams: TeamData[]) => {
                     this.setState({ teams });
                 })
-                .catch(e => {
-                    // noinspection TsLint
-                    console.error(e);
+                .catch(() => {
                     this.setState({ error: 'Не получилось прочитать файл' });
                 });
         } else {
