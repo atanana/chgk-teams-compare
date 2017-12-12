@@ -64,8 +64,11 @@ class App extends React.Component<AppProps, AppState> {
                         <label className="label">Выберите файл с результатами</label>
                         <Uploader onFileSelected={this.onFileSelected}/>
                     </div>
-                    {
-                        this.state.teams.length > 0 &&
+                </div>
+                {
+                    this.state.teams.length > 0 &&
+                    <div className="box">
+                        <h1 className="title">Повопросное сравнение</h1>
                         <div className="field">
                             <label className="label">Выберите команды</label>
                             <TeamsSelect
@@ -74,8 +77,8 @@ class App extends React.Component<AppProps, AppState> {
                                 selectedTeams={this.state.selectedTeams}
                             />
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         );
     }
