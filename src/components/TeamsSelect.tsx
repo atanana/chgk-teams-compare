@@ -3,10 +3,11 @@ import ReactSelectClass, { Option } from 'react-select';
 import 'react-select/dist/react-select.css';
 import { TeamData } from '../data/ResultsData';
 import * as _ from 'lodash';
+import { teamText } from '../utils/UiUtils';
 
 const teamToOption = (data: TeamData): Option => {
     return {
-        label: `${data.name}(${data.city})`,
+        label: teamText(data),
         value: data.id
     };
 };

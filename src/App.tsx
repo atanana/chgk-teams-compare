@@ -5,6 +5,7 @@ import ResultsParser from './parse/ResultsParser';
 import { TeamData } from './data/ResultsData';
 import TeamsSelect from './components/TeamsSelect';
 import * as _ from 'lodash';
+import TourComparison from './components/TourComparison';
 
 interface AppState {
     error: string | null;
@@ -77,6 +78,10 @@ class App extends React.Component<AppProps, AppState> {
                                 selectedTeams={this.state.selectedTeams}
                             />
                         </div>
+                        {
+                            this.state.selectedTeams.length > 0 &&
+                            <TourComparison teams={this.state.selectedTeams}/>
+                        }
                     </div>
                 }
             </div>
