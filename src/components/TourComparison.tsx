@@ -22,7 +22,11 @@ const AnswersRow = ({answers, keyPrefix}: AnswersProps) => (
     <>
     {
         answers.map((answer, i) => (
-            <td key={`${keyPrefix}_${i}`}>{answer}</td>
+            <td key={`${keyPrefix}_${i}`}>
+                <span className={`tag is-rounded ${answer === 1 ? 'is-success' : 'is-danger'}`}>
+                    <i className={`fa ${answer === 1 ? 'fa-check-circle-o' : 'fa-times-circle-o'}`}/>
+                </span>
+            </td>
         ))
     }
     </>
