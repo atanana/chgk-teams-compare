@@ -63,7 +63,9 @@ const TourComparison = ({teams}: ComponentProps) => {
                 <th/>
                 {
                     teams.map(team => (
-                        <th key={team.id}>{teamText(team)}</th>
+                        <th key={team.id}>
+                            <abbr title={teamText(team)}>{team.name}</abbr>
+                        </th>
                     ))
                 }
             </tr>
