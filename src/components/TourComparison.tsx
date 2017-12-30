@@ -20,15 +20,15 @@ interface AnswersProps {
 
 const AnswersRow = ({answers, keyPrefix}: AnswersProps) => (
     <>
-    {
-        answers.map((answer, i) => (
-            <td key={`${keyPrefix}_${i}`}>
+        {
+            answers.map((answer, i) => (
+                <td key={`${keyPrefix}_${i}`}>
                 <span className={`tag is-rounded ${answer === 1 ? 'is-success' : 'is-danger'}`}>
                     <i className={`fa ${answer === 1 ? 'fa-check-circle-o' : 'fa-times-circle-o'}`}/>
                 </span>
-            </td>
-        ))
-    }
+                </td>
+            ))
+        }
     </>
 );
 
@@ -37,23 +37,24 @@ const TourView = ({tours}: TourProps) => {
     const answers = tours[0].answers.length;
     return (
         <>
-        <tr>
-            <td colSpan={100} className="has-text-centered">Тур {tour}</td>
-        </tr>
-        {
-            _.range(answers)
-                .map(answer => (
-                    <Fragment key={`answer_${tour}_${answer}`}>
-                        <tr>
-                            <td>{answer + 1}</td>
-                            <AnswersRow
-                                keyPrefix={`answer_${tour}_${answer}`}
-                                answers={tours.map(item => item.answers[answer])}
-                            />
-                        </tr>
-                    </Fragment>
-                ))
-        }
+            <tr>
+                <td colSpan={100} className="has-text-centered">Тур {tour}</td>
+            </tr>
+            {
+                _.range(answers)
+                    .map(answer => (
+                        <Fragment key={`answer_${tour}_${answer}`}>
+                            <tr>
+                                <td>{answer + 1}</td>
+                                <td>{answer + 1}</td>
+                                <AnswersRow
+                                    keyPrefix={`answer_${tour}_${answer}`}
+                                    answers={tours.map(item => item.answers[answer])}
+                                />
+                            </tr>
+                        </Fragment>
+                    ))
+            }
         </>
     );
 };
@@ -65,6 +66,7 @@ const TourComparison = ({teams}: ComponentProps) => {
             <thead>
             <tr>
                 <th/>
+                <th><abbr title="100% - (количество взявших вопрос команд)">Сложность</abbr></th>
                 {
                     teams.map(team => (
                         <th key={team.id}>
