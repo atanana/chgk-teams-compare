@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { Fragment } from 'react';
-import { TeamData, Tour } from '../data/ResultsData';
+import { TeamData, Tour, TourComplexity } from '../data/ResultsData';
 import { teamText } from '../utils/UiUtils';
 
 import * as _ from 'lodash';
 
 interface ComponentProps {
     teams: TeamData[];
+    answerComplexity: TourComplexity[];
 }
 
 interface TourProps {
     tours: Tour[];
+    tourComplexity: TourComplexity;
 }
 
 interface AnswersProps {
@@ -32,7 +34,7 @@ const AnswersRow = ({answers, keyPrefix}: AnswersProps) => (
     </>
 );
 
-const TourView = ({tours}: TourProps) => {
+const TourView = ({tours, tourComplexity}: TourProps) => {
     const tour = tours[0].tour;
     const answers = tours[0].answers.length;
     return (
@@ -46,7 +48,7 @@ const TourView = ({tours}: TourProps) => {
                         <Fragment key={`answer_${tour}_${answer}`}>
                             <tr>
                                 <td>{answer + 1}</td>
-                                <td>{answer + 1}</td>
+                                <td>{(tourComplexity.answersComplexity[answer] * 100).toFixed(2) + '%'}</td>
                                 <AnswersRow
                                     keyPrefix={`answer_${tour}_${answer}`}
                                     answers={tours.map(item => item.answers[answer])}
@@ -59,7 +61,7 @@ const TourView = ({tours}: TourProps) => {
     );
 };
 
-const TourComparison = ({teams}: ComponentProps) => {
+const TourComparison = ({teams, answerComplexity}: ComponentProps) => {
     const toursCount = teams[0].tours.length;
     return (
         <table className="table is-fullwidth is-hoverable is-striped">
@@ -80,7 +82,11 @@ const TourComparison = ({teams}: ComponentProps) => {
             {
                 _.range(toursCount)
                     .map(tour => (
-                        <TourView key={`tour_${tour}`} tours={teams.map(team => team.tours[tour])}/>
+                        <TourView
+                            key={`tour_${tour}`}
+                            tours={teams.map(team => team.tours[tour])}
+                            tourComplexity={answerComplexity[tour]}
+                        />
                     ))
             }
             </tbody>

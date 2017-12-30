@@ -7,8 +7,11 @@ import { TeamData } from './data/ResultsData';
 import Uploader from './components/Uploader';
 import TeamsSelect from './components/TeamsSelect';
 import TourComparison from './components/TourComparison';
+import ComplexityCalculator from './calculate/ComplexityCalculator';
 
 const Parser = jest.fn<ResultsParser>();
+
+const Calculator = jest.fn<ComplexityCalculator>();
 
 const FileMock = jest.fn<File>();
 
@@ -21,12 +24,12 @@ const createFileListMock = (file: File) => {
 };
 
 function createApp(parser: ResultsParser = new Parser) {
-    return shallow(<App parser={parser}/>);
+    return shallow(<App parser={parser} complexityCalculator={new Calculator}/>);
 }
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App parser={new Parser}/>, div);
+    ReactDOM.render(<App parser={new Parser} complexityCalculator={new Calculator}/>, div);
 });
 
 it('renders no error', () => {

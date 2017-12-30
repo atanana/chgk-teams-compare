@@ -8,7 +8,7 @@ export default class ComplexityCalculator {
                 const answerComplexity = tour.answers.map((_, j) => {
                     const answers = teams.map(team => team.tours[i].answers[j]);
                     const rightAnswers = answers.filter(answer => answer === 1);
-                    return +(1 - rightAnswers.length / answers.length).toFixed(2);
+                    return +(1 - rightAnswers.length / answers.length).toFixed(4);
                 });
                 return new TourComplexity(tour.tour, answerComplexity);
             });

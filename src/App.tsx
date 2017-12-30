@@ -2,26 +2,30 @@ import * as React from 'react';
 import './App.css';
 import Uploader from './components/Uploader';
 import ResultsParser from './parse/ResultsParser';
-import { TeamData } from './data/ResultsData';
+import { TeamData, TourComplexity } from './data/ResultsData';
 import TeamsSelect from './components/TeamsSelect';
 import * as _ from 'lodash';
 import TourComparison from './components/TourComparison';
+import ComplexityCalculator from './calculate/ComplexityCalculator';
 
 interface AppState {
     error: string | null;
     teams: TeamData[];
     selectedTeams: TeamData[];
+    answerComplexity: TourComplexity[];
 }
 
 interface AppProps {
     parser: ResultsParser;
+    complexityCalculator: ComplexityCalculator;
 }
 
 class App extends React.Component<AppProps, AppState> {
     state: AppState = {
         error: null,
         teams: [],
-        selectedTeams: []
+        selectedTeams: [],
+        answerComplexity: []
     };
 
     constructor(props: AppProps) {
@@ -35,10 +39,13 @@ class App extends React.Component<AppProps, AppState> {
         if (files && files.length) {
             this.props.parser.parse(files[0])
                 .then((teams: TeamData[]) => {
-                    this.setState({ teams: _.sortBy(teams, ['name', 'city']) });
+                    this.setState({
+                        teams: _.sortBy(teams, ['name', 'city']),
+                        answerComplexity: this.props.complexityCalculator.calculate(teams)
+                    });
                 })
                 .catch(() => {
-                    this.setState({ error: 'Не получилось прочитать файл' });
+                    this.setState({error: 'Не получилось прочитать файл'});
                 });
         } else {
             alert('Пожалуйста, выберите файл');
@@ -80,7 +87,10 @@ class App extends React.Component<AppProps, AppState> {
                         </div>
                         {
                             this.state.selectedTeams.length > 0 &&
-                            <TourComparison teams={this.state.selectedTeams}/>
+                            <TourComparison
+                                teams={this.state.selectedTeams}
+                                answerComplexity={this.state.answerComplexity}
+                            />
                         }
                     </div>
                 }

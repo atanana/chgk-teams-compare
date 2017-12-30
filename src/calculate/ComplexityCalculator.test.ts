@@ -26,6 +26,6 @@ it('should calculate answer complexity', () => {
 
     expect(calculator.calculate([team1, team2, team3])).toEqual([
         new TourComplexity(1, [1, 0]),
-        new TourComplexity(2, [+(2 / 3).toFixed(2), +(1 / 3).toFixed(2)])
+        new TourComplexity(2, [+(2 / 3).toFixed(4), +(1 / 3).toFixed(4)])
     ]);
 });
