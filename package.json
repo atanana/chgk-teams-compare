@@ -99,7 +99,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "/home/andrei/dev/IdeaProjects/js/teams-compare/tsconfig.test.json"
+        "tsConfigFile": "tsconfig.test.json"
       }
     }
   },
