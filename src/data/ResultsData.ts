@@ -8,6 +8,16 @@ export class Tour {
     }
 }
 
+export class TourComplexity {
+    tour: number;
+    answersComplexity: number[];
+
+    constructor(tour: number, answersComplexity: number[]) {
+        this.tour = tour;
+        this.answersComplexity = answersComplexity;
+    }
+}
+
 export class TeamData {
     id: number;
     name: string;
