@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div
+    className="file"
+  >
+    <label
+      className="file-label"
+    >
+      <input
+        className="file-input"
+        onChange={[Function]}
+        type="file"
+      />
+      <span
+        className="file-cta"
+      >
+        <span
+          className="file-icon"
+        >
+          <i
+            className="fa fa-upload"
+          />
+        </span>
+        <span
+          className="file-label"
+        >
+          Выбрать файл…
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+`;

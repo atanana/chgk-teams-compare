@@ -1,0 +1,609 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<table
+  className="table is-fullwidth is-hoverable is-striped"
+>
+  <thead>
+    <tr>
+      <th />
+      <th>
+        <abbr
+          title="100% - (количество взявших вопрос команд)"
+        >
+          Сложность
+        </abbr>
+      </th>
+      <th>
+        <abbr
+          title="test 1(test 1)"
+        >
+          test 1
+        </abbr>
+      </th>
+      <th>
+        <abbr
+          title="test 2(test 2)"
+        >
+          test 2
+        </abbr>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td
+        className="has-text-centered"
+        colSpan={100}
+      >
+        Тур 
+        1
+      </td>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        100.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        22.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        0.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        33.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        50.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        6
+      </td>
+      <td>
+        65.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        7
+      </td>
+      <td>
+        34.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="has-text-centered"
+        colSpan={100}
+      >
+        Тур 
+        2
+      </td>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        100.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        22.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        0.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        33.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        50.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        6
+      </td>
+      <td>
+        65.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        7
+      </td>
+      <td>
+        34.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="has-text-centered"
+        colSpan={100}
+      >
+        Тур 
+        3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        100.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        22.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        0.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        33.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        50.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        6
+      </td>
+      <td>
+        65.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-danger"
+        >
+          <i
+            className="fa fa-times-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        7
+      </td>
+      <td>
+        34.00%
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+      <td>
+        <span
+          className="tag is-rounded is-success"
+        >
+          <i
+            className="fa fa-check-circle-o"
+          />
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
