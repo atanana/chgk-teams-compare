@@ -44,7 +44,8 @@ class App extends React.Component<AppProps, AppState> {
                         answerComplexity: this.props.complexityCalculator.calculate(teams)
                     });
                 })
-                .catch(() => {
+                .catch(e => {
+                    console.error(e);
                     this.setState({error: 'Не получилось прочитать файл'});
                 });
         } else {

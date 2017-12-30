@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import App from './App';
 import ResultsParser from './parse/ResultsParser';
-import { TeamData } from './data/ResultsData';
+import { TeamData, TourComplexity } from './data/ResultsData';
 import Uploader from './components/Uploader';
 import TeamsSelect from './components/TeamsSelect';
 import TourComparison from './components/TourComparison';
@@ -11,7 +11,11 @@ import ComplexityCalculator from './calculate/ComplexityCalculator';
 
 const Parser = jest.fn<ResultsParser>();
 
-const Calculator = jest.fn<ComplexityCalculator>();
+const Calculator = jest.fn<ComplexityCalculator>(() => ({
+    calculate(): TourComplexity[] {
+        return [];
+    }
+}));
 
 const FileMock = jest.fn<File>();
 
@@ -23,8 +27,8 @@ const createFileListMock = (file: File) => {
     return new Clazz;
 };
 
-function createApp(parser: ResultsParser = new Parser) {
-    return shallow(<App parser={parser} complexityCalculator={new Calculator}/>);
+function createApp(parser: ResultsParser = new Parser, calculator: ComplexityCalculator = new Calculator) {
+    return shallow(<App parser={parser} complexityCalculator={calculator}/>);
 }
 
 it('renders without crashing', () => {
@@ -103,6 +107,32 @@ it('saves parser error', done => {
     });
 });
 
+it('saves calculated complexity results', done => {
+    const fileMock = new FileMock;
+    const teamsData = [
+        new TeamData(1, 'test', 'test')
+    ];
+    const CustomParser = jest.fn<ResultsParser>(() => ({
+        parse(): Promise<TeamData[]> {
+            return Promise.resolve(teamsData);
+        }
+    }));
+    const toursComplexity = [
+        new TourComplexity(1, [1, 0, .5])
+    ];
+    const CustomCalculator = jest.fn<ComplexityCalculator>(() => ({
+        calculate(teams: TeamData[]): TourComplexity[] {
+            return teams === teamsData ? toursComplexity : [];
+        }
+    }));
+    const app = createApp(new CustomParser, new CustomCalculator);
+    app.find(Uploader).prop('onFileSelected')(createFileListMock(fileMock));
+    setImmediate(() => {
+        expect(app.state('answerComplexity')).toEqual(toursComplexity);
+        done();
+    });
+});
+
 it('not show team selector when no teams', () => {
     const app = createApp();
     expect(app.find(TeamsSelect).exists()).toBe(false);
@@ -156,6 +186,24 @@ it('pass selected teams for compare', done => {
     app.setState({selectedTeams: teams});
     setImmediate(() => {
         expect(app.find(TourComparison).prop('teams')).toEqual(teams);
+        done();
+    });
+});
+
+it('pass answers complexity for compare', done => {
+    const app = createApp();
+    const teams = [
+        new TeamData(1, 'test 1', 'test 1'),
+        new TeamData(2, 'test 2', 'test 2')
+    ];
+    const toursComplexity = [
+        new TourComplexity(1, [1, 0, .5])
+    ];
+    app.setState({teams});
+    app.setState({selectedTeams: teams});
+    app.setState({answerComplexity: toursComplexity});
+    setImmediate(() => {
+        expect(app.find(TourComparison).prop('answerComplexity')).toEqual(toursComplexity);
         done();
     });
 });
