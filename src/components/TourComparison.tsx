@@ -47,7 +47,12 @@ const TourView = ({tours, tourComplexity}: TourProps) => {
                     .map(answer => (
                         <Fragment key={`answer_${tour}_${answer}`}>
                             <tr>
-                                <td>{answer + 1}</td>
+                                <td>
+                                    {answer + 1 + answers * (tour - 1)}
+                                    <span className="has-text-grey is-size-7 ml">
+                                        {answer + 1}
+                                    </span>
+                                </td>
                                 <td>{(tourComplexity.answersComplexity[answer] * 100).toFixed(2) + '%'}</td>
                                 <AnswersRow
                                     keyPrefix={`answer_${tour}_${answer}`}
