@@ -18,14 +18,14 @@
     "postcss-loader": "2.0.6",
     "promise": "8.0.1",
     "react": "^16.2.0",
-    "react-dev-utils": "^4.0.1",
-    "react-dom": "^16.1.1",
-    "source-map-loader": "^0.2.1",
+    "react-dev-utils": "^4.2.1",
+    "react-dom": "^16.1.2",
+    "source-map-loader": "^0.2.3",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
-    "ts-jest": "^20.0.7",
+    "ts-jest": "^20.0.14",
     "ts-loader": "^2.3.7",
-    "tslint": "^5.7.0",
+    "tslint": "^5.8.0",
     "tslint-loader": "^3.5.3",
     "tslint-react": "^3.2.0",
     "typescript": "~2.6.2",
@@ -33,14 +33,17 @@
     "webpack": "3.5.1",
     "webpack-dev-server": "3.1.2",
     "webpack-manifest-plugin": "1.2.1",
-    "whatwg-fetch": "2.0.3"
+    "whatwg-fetch": "2.0.3",
+    "snyk": "^1.116.2"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.5",
@@ -114,5 +117,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://atanana.github.io/chgk-teams-compare"
+  "homepage": "https://atanana.github.io/chgk-teams-compare",
+  "snyk": true
 }
